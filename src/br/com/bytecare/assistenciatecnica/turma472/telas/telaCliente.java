@@ -61,6 +61,7 @@ public class telaCliente extends javax.swing.JPanel {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
+        setEnabled(false);
         setMaximumSize(new java.awt.Dimension(657, 458));
         setMinimumSize(new java.awt.Dimension(657, 458));
         setPreferredSize(new java.awt.Dimension(657, 458));
