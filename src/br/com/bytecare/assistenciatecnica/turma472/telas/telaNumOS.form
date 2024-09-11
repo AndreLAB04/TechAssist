@@ -92,7 +92,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Adicionar numero de OS"/>
+            <Property name="text" type="java.lang.String" value="Adicionar numero de OS OLA"/>
           </Properties>
         </Component>
       </SubComponents>

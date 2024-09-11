@@ -45,7 +45,7 @@ public class telaNumOS extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Adicionar numero de OS");
+        jLabel1.setText("Adicionar numero de OS OLA");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
