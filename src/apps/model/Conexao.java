@@ -8,18 +8,18 @@ import java.sql.*;
  *
  * @author andmi
  */
-public class Model {
-     public static Connection conectar() {
+public class Conexao {
+    public static Connection conector(){
         Connection conexao;
-        String driver = "com.postgresql.jdbc.Driver";
-        String url = "jdbc:postgresql://localhost:1227/dbinfox?characterEncoding=utf-8";
-        String user = "root";
-        String password = "";
+        String driver = "org.postgresql.Driver";
+        String url = "jdbc:postgresql://localhost:1227/postgres";
+        String user = "postgres";
+        String password = "1234";
         try {
             Class.forName(driver);
             conexao = DriverManager.getConnection(url, user, password);
             return conexao;
-        } catch (ClassNotFoundException | SQLException e){
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e);
             return null;
         }
