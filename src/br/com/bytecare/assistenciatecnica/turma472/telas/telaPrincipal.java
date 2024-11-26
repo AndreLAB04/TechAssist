@@ -41,10 +41,10 @@ public class telaPrincipal extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        cadastroCliente = new javax.swing.JMenuItem();
         cadastroOS = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        cadastroUser = new javax.swing.JMenuItem();
+        relatorio = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -54,9 +54,7 @@ public class telaPrincipal extends javax.swing.JFrame {
         setTitle("Tech Assist v0.2 - Tela Principal");
         setBackground(new java.awt.Color(51, 51, 51));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
-        setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -170,19 +168,19 @@ public class telaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jMenuItem1.setIconTextGap(-15);
-        jMenuItem1.setMaximumSize(new java.awt.Dimension(120, 22));
-        jMenuItem1.setMinimumSize(new java.awt.Dimension(120, 22));
-        jMenuItem1.setPreferredSize(new java.awt.Dimension(120, 22));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        cadastroCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        cadastroCliente.setText("Cliente");
+        cadastroCliente.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        cadastroCliente.setIconTextGap(-15);
+        cadastroCliente.setMaximumSize(new java.awt.Dimension(120, 22));
+        cadastroCliente.setMinimumSize(new java.awt.Dimension(120, 22));
+        cadastroCliente.setPreferredSize(new java.awt.Dimension(120, 22));
+        cadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                cadastroClienteActionPerformed(evt);
             }
         });
-        menuCadastro.add(jMenuItem1);
+        menuCadastro.add(cadastroCliente);
 
         cadastroOS.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_DOWN_MASK));
         cadastroOS.setText("OS");
@@ -197,19 +195,24 @@ public class telaPrincipal extends javax.swing.JFrame {
         });
         menuCadastro.add(cadastroOS);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        jMenuItem3.setText("Usuários");
-        jMenuItem3.setIconTextGap(-15);
-        jMenuItem3.setMaximumSize(new java.awt.Dimension(120, 22));
-        jMenuItem3.setMinimumSize(new java.awt.Dimension(120, 22));
-        jMenuItem3.setPreferredSize(new java.awt.Dimension(120, 22));
-        menuCadastro.add(jMenuItem3);
+        cadastroUser.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        cadastroUser.setText("Usuários");
+        cadastroUser.setIconTextGap(-15);
+        cadastroUser.setMaximumSize(new java.awt.Dimension(120, 22));
+        cadastroUser.setMinimumSize(new java.awt.Dimension(120, 22));
+        cadastroUser.setPreferredSize(new java.awt.Dimension(120, 22));
+        cadastroUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastroUserActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(cadastroUser);
 
         jMenuBar1.add(menuCadastro);
 
-        jMenu4.setBackground(new java.awt.Color(51, 51, 51));
-        jMenu4.setForeground(new java.awt.Color(51, 51, 51));
-        jMenu4.setText("Relatório");
+        relatorio.setBackground(new java.awt.Color(51, 51, 51));
+        relatorio.setForeground(new java.awt.Color(51, 51, 51));
+        relatorio.setText("Relatório");
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem4.setText("Clientes");
@@ -222,7 +225,7 @@ public class telaPrincipal extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem4);
+        relatorio.add(jMenuItem4);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem5.setText("Serviços");
@@ -235,9 +238,9 @@ public class telaPrincipal extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem5);
+        relatorio.add(jMenuItem5);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(relatorio);
 
         jMenu1.setBackground(new java.awt.Color(51, 51, 51));
         jMenu1.setForeground(new java.awt.Color(51, 51, 51));
@@ -273,9 +276,9 @@ public class telaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_cadastroClienteActionPerformed
 
     private void cadastroOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroOSActionPerformed
         telaOS os = new telaOS();
@@ -304,6 +307,12 @@ public class telaPrincipal extends javax.swing.JFrame {
         DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
         dataAtual.setText(formatador.format(data));
     }//GEN-LAST:event_formWindowActivated
+
+    private void cadastroUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroUserActionPerformed
+        telaUsers us = new telaUsers();
+        us.setVisible(true);
+        desktop.add(us);
+    }//GEN-LAST:event_cadastroUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,6 +358,40 @@ public class telaPrincipal extends javax.swing.JFrame {
         this.dataAtual = dataAtual;
     }
 
+    public JMenuItem getCadastroCliente() {
+        return cadastroCliente;
+    }
+
+    public void setCadastroCliente(JMenuItem cadastroCliente) {
+        this.cadastroCliente = cadastroCliente;
+    }
+
+    public JMenuItem getCadastroOS() {
+        return cadastroOS;
+    }
+
+    public void setCadastroOS(JMenuItem cadastroOS) {
+        this.cadastroOS = cadastroOS;
+    }
+
+    public JMenuItem getCadastroUser() {
+        return cadastroUser;
+    }
+
+    public void setCadastroUser(JMenuItem cadastroUser) {
+        this.cadastroUser = cadastroUser;
+    }
+
+    public JMenu getRelatorio() {
+        return relatorio;
+    }
+
+    public void setRelatorio(JMenu relatorio) {
+        this.relatorio = relatorio;
+    }
+    
+    
+    
     public JLabel getTipoUser() {
         return tipoUser;
     }
@@ -358,7 +401,9 @@ public class telaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem cadastroCliente;
     private javax.swing.JMenuItem cadastroOS;
+    private javax.swing.JMenuItem cadastroUser;
     private javax.swing.JLabel dataAtual;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel jLabel2;
@@ -366,14 +411,12 @@ public class telaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu relatorio;
     private javax.swing.JLabel tipoUser;
     // End of variables declaration//GEN-END:variables
 }

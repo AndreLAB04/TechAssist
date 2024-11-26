@@ -11,7 +11,6 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
-import javax.swing.JTable;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -46,7 +45,8 @@ public class osController {
     }
     
     public void emitirOs() {
-        double valor = Double.parseDouble(os.getValorOS().getText().replace(",", "."));
+        double valor = Double.parseDouble(os.getValorOS().getText());
+        System.out.println(valor);
         String tipo = os.getTipo();
         String equip = os.getEquipOS().getText();
         String servico = os.getServicoOS().getText();
@@ -55,16 +55,8 @@ public class osController {
         String situacao = os.getSituacaoOS().getSelectedItem().toString();
         int idcliente = Integer.parseInt(os.getIdCliente().getText());
         
-        System.out.println(valor);
-        System.out.println(tipo);
-        System.out.println(equip);
-        System.out.println(servico);
-        System.out.println(defeito);
-        System.out.println(tecnico);
-        System.out.println(situacao);
-        System.out.println(idcliente);    
-        
         try(PreparedStatement pst = conexao.prepareStatement("insert into public.os (valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, idcliente) values(?, ?, ?, ?, ?, ?, ?, ?)")){
+            System.out.println();
             pst.setDouble(1, valor);
             pst.setString(2, tipo);
             pst.setString(3, equip);
@@ -98,7 +90,7 @@ public class osController {
     
     public void pesquisarOS(){
         String num_os = JOptionPane.showInputDialog("Número da OS");
-        try(PreparedStatement pst = conexao.prepareStatement("select id_os, valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, to_char(current_timestamp,'DD-MM-YYYY HH24:MI:SS') as data_os, idcliente from os=?;")){
+        try(PreparedStatement pst = conexao.prepareStatement("select id_os, valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, to_char(current_timestamp,'DD-MM-YYYY HH24:MI:SS') as data_os, idcliente from os where id_os=?;")){
             pst.setString(1, num_os);
             rs=pst.executeQuery();
             if(rs.next()){
@@ -183,7 +175,7 @@ public class osController {
             }
         }
     }
-    
+ 
     public void limparCamposOS(){
         //limpando campos
         os.getNumOS().setText(null);

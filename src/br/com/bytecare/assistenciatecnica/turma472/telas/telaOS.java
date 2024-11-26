@@ -28,7 +28,7 @@ public class telaOS extends javax.swing.JInternalFrame {
     }
     
     private String tipo;
-
+    osController cont = new osController(this);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +72,7 @@ public class telaOS extends javax.swing.JInternalFrame {
         defeitoOS = new javax.swing.JTextField();
 
         setClosable(true);
+        setTitle("TechAssist v0.2 - Cadastro Ordem de Serviço");
         setMaximumSize(new java.awt.Dimension(2000, 1200));
         setMinimumSize(new java.awt.Dimension(1014, 716));
         setPreferredSize(new java.awt.Dimension(1014, 716));
@@ -518,8 +519,7 @@ public class telaOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_dataOSActionPerformed
 
     private void searchOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchOSActionPerformed
-        osController os = new osController(this);
-        os.pesquisarOS();
+        cont.pesquisarOS();
     }//GEN-LAST:event_searchOSActionPerformed
 
     private void situacaoOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_situacaoOSActionPerformed
@@ -535,7 +535,7 @@ public class telaOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_clientesOSActionPerformed
 
     private void clientesOSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clientesOSKeyReleased
-        osController cont = new osController(this);
+        
         cont.pesquisarCliente();
     }//GEN-LAST:event_clientesOSKeyReleased
 
@@ -598,18 +598,15 @@ public class telaOS extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_orcamentoOSActionPerformed
 
     private void addOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOSActionPerformed
-        osController os = new osController(this);
-        os.emitirOs();
+        cont.emitirOs();
     }//GEN-LAST:event_addOSActionPerformed
 
     private void editOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editOSActionPerformed
-        osController os = new osController(this);
-        os.alterarOS();
+        cont.alterarOS();
     }//GEN-LAST:event_editOSActionPerformed
 
     private void removeOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeOSActionPerformed
-        osController os = new osController(this);
-        os.excluirOS();
+        cont.excluirOS();
     }//GEN-LAST:event_removeOSActionPerformed
     
     public JTextField getClientesOS() {
