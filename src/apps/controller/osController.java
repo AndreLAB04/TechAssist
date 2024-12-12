@@ -8,6 +8,7 @@ import apps.model.Conexao;
 import br.com.bytecare.assistenciatecnica.turma472.telas.*;
 import java.awt.*;
 import java.sql.*;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -27,71 +28,73 @@ public class osController {
         this.os = os; // Armazena a instância passada
     }
     
-    public void pesquisarCliente() {
+    public void pesquisarCliente() throws SQLException {
         String cliente = os.getClientesOS().getText();
-        String sql = "select id_cliente as Id, nome_cliente as Nome, fone_cliente as Fone from clientes where nome_cliente like ?";
-        try {
-            pst = conexao.prepareStatement(sql);
+        //System.out.println("Chegou ate aq");
+        //System.out.println("Chegou até aq2");
+        try(PreparedStatement pst = conexao.prepareStatement("select id_cliente as Id, nome_cliente as Nome, fone_cliente as Fone from clientes where nome_cliente like ?")){
+            //System.out.println("Chegou até aq4");
             pst.setString(1, cliente + "%");
+            //System.out.println("Chegou até aq5");
             rs = pst.executeQuery();
+            //System.out.println("Chegou até aq6");
             os.getTabelaClientes().setModel(DbUtils.resultSetToTableModel(rs));
         } catch (SQLException ex) {
             Logger.getLogger(osController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     public void setarCampos(){
         int setar = os.getTabelaClientes().getSelectedRow();
         os.getIdCliente().setText(os.getTabelaClientes().getModel().getValueAt(setar, 0).toString());
     }
     
-    public void emitirOs() {
-        double valor = Double.parseDouble(os.getValorOS().getText());
-        System.out.println(valor);
+    public void emitirOs() throws SQLException {
+        telaPrincipal p = new telaPrincipal();
+        Date data = new Date();
+        java.sql.Date dataa = new java.sql.Date(data.getTime());
+        String valor = os.getValorOS().getText();
         String tipo = os.getTipo();
         String equip = os.getEquipOS().getText();
         String servico = os.getServicoOS().getText();
         String defeito = os.getDefeitoOS().getText();
         String tecnico = os.getTecnicoOS().getText();
         String situacao = os.getSituacaoOS().getSelectedItem().toString();
-        int idcliente = Integer.parseInt(os.getIdCliente().getText());
-        
-        try(PreparedStatement pst = conexao.prepareStatement("insert into public.os (valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, idcliente) values(?, ?, ?, ?, ?, ?, ?, ?)")){
-            System.out.println();
-            pst.setDouble(1, valor);
-            pst.setString(2, tipo);
-            pst.setString(3, equip);
-            pst.setString(4, servico);
-            pst.setString(5, defeito);
-            pst.setString(6, tecnico);
-            pst.setString(7, situacao);
-            pst.setInt(8, idcliente);
-            pst.executeUpdate();
-            if ((os.getIdCliente().getText().isEmpty()) || (os.getEquipOS().getText().isEmpty()) || (os.getDefeitoOS().getText().isEmpty()) || (os.getSituacaoOS().getSelectedItem().equals(" "))) {
+        String idcliente = os.getIdCliente().getText();
+        if ((idcliente.isEmpty()) || (equip.isEmpty()) || (defeito.isEmpty()) || (situacao.equals(" ")) || (tipo.isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
             } else {
+            try(PreparedStatement pst = conexao.prepareStatement("insert into os (valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, data_os, idcliente) values(?, ?, ?, ?, ?, ?, ?, ?, ?)")){
+                pst.setString(1, valor);
+                pst.setString(2, tipo);
+                pst.setString(3, equip);
+                pst.setString(4, servico);
+                pst.setString(5, defeito);
+                pst.setString(6, tecnico);
+                pst.setString(7, situacao);
+                pst.setDate(8, dataa);
+                pst.setInt(9, Integer.parseInt(idcliente));
+                pst.executeUpdate();
+                System.out.println("teste1");
                 int adicionado = pst.executeUpdate();
+                System.out.println("teste2");
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "OS emitida com sucesso");
                     os.getAddOS().setEnabled(false);
                     os.getSearchOS().setEnabled(false);
                     os.getPrintOS().setEnabled(true);
                 }
-            }
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                conexao.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
             }
         }
     }
     
     public void pesquisarOS(){
-        String num_os = JOptionPane.showInputDialog("Número da OS");
-        try(PreparedStatement pst = conexao.prepareStatement("select id_os, valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, to_char(current_timestamp,'DD-MM-YYYY HH24:MI:SS') as data_os, idcliente from os where id_os=?;")){
-            pst.setString(1, num_os);
+        String numOsS = JOptionPane.showInputDialog("Número da OS");
+        int numOs = Integer.parseInt(numOsS);
+        try(PreparedStatement pst = conexao.prepareStatement("select id_os, valor_os, tipo, equipamento, servico, defeito, tecnico, situacao, data_os, idcliente from os where id_os=?;")){
+            pst.setInt(1, numOs);
             rs=pst.executeQuery();
             if(rs.next()){
                 os.getNumOS().setText(rs.getString(1));
@@ -138,8 +141,8 @@ public class osController {
             pst.setString(5, os.getDefeitoOS().getText());
             pst.setString(6, os.getTecnicoOS().getText());
             pst.setString(7, os.getSituacaoOS().getSelectedItem().toString());
-            pst.setString(8, os.getIdCliente().getText());
-            pst.setString(9, os.getNumOS().getText());
+            pst.setInt(8, Integer.parseInt(os.getIdCliente().getText()));
+            pst.setInt(9, Integer.parseInt(os.getNumOS().getText()));
             if ((os.getIdCliente().getText().isEmpty()) || (os.getEquipOS().getText().isEmpty()) || (os.getDefeitoOS().getText().isEmpty()) || os.getSituacaoOS().getSelectedItem().equals(" ")) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios");
             } else {
@@ -151,12 +154,6 @@ public class osController {
             }
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
-        } finally {
-            try {
-                conexao.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
         }
     }
     
@@ -164,9 +161,9 @@ public class osController {
         int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir está OS?", "Atenção", JOptionPane.YES_NO_OPTION);
         if(confirmacao == JOptionPane.YES_OPTION){
             try(PreparedStatement pst = conexao.prepareStatement("delete from os where id_os=?")){
-                pst.setString(1, os.getNumOS().getText());
+                pst.setInt(1, Integer.parseInt(os.getNumOS().getText()));
                 int apagado = pst.executeUpdate();
-                if(apagado>0){
+                if(apagado!=0){
                     JOptionPane.showMessageDialog(null, "OS excluída com sucesso");
                     limparCamposOS();                    
                 }

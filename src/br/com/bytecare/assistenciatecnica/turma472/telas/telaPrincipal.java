@@ -277,7 +277,13 @@ public class telaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClienteActionPerformed
-        // TODO add your handling code here:
+        telaCliente cli = new telaCliente();
+        cli.setVisible(true);
+        try {
+            cli.setMaximum(true);
+        } catch (PropertyVetoException e) {
+        }
+        desktop.add(cli);
     }//GEN-LAST:event_cadastroClienteActionPerformed
 
     private void cadastroOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroOSActionPerformed
@@ -389,9 +395,7 @@ public class telaPrincipal extends javax.swing.JFrame {
     public void setRelatorio(JMenu relatorio) {
         this.relatorio = relatorio;
     }
-    
-    
-    
+        
     public JLabel getTipoUser() {
         return tipoUser;
     }

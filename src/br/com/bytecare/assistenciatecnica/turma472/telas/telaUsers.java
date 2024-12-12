@@ -47,11 +47,13 @@ public class telaUsers extends javax.swing.JInternalFrame {
         campoLoginUser = new javax.swing.JTextField();
         perfilUser = new javax.swing.JLabel();
         campoPerfilUser = new javax.swing.JComboBox<>();
-        editUser = new javax.swing.JButton();
-        removeUser = new javax.swing.JButton();
-        addUser = new javax.swing.JButton();
-        pesquisarUser = new javax.swing.JButton();
+        butEditUser = new javax.swing.JButton();
+        butRemoveUser = new javax.swing.JButton();
+        butAddUser = new javax.swing.JButton();
+        butPesquisarUser = new javax.swing.JButton();
+        butLimparCampos = new javax.swing.JButton();
 
+        setClosable(true);
         setTitle("TechAssist v0.2 - Cadastro de Usuario");
         setMinimumSize(new java.awt.Dimension(575, 410));
         setPreferredSize(new java.awt.Dimension(575, 410));
@@ -61,8 +63,9 @@ public class telaUsers extends javax.swing.JInternalFrame {
         idUser.setPreferredSize(new java.awt.Dimension(64, 32));
 
         campoUserId.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoUserId.setEnabled(false);
-        campoUserId.setPreferredSize(null);
+        campoUserId.setMaximumSize(new java.awt.Dimension(50, 35));
+        campoUserId.setMinimumSize(new java.awt.Dimension(50, 35));
+        campoUserId.setPreferredSize(new java.awt.Dimension(50, 35));
         campoUserId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUserIdActionPerformed(evt);
@@ -75,8 +78,9 @@ public class telaUsers extends javax.swing.JInternalFrame {
         nomeUser.setPreferredSize(new java.awt.Dimension(100, 32));
 
         campoNomeUser.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoNomeUser.setMinimumSize(new java.awt.Dimension(100, 200));
-        campoNomeUser.setPreferredSize(null);
+        campoNomeUser.setMaximumSize(new java.awt.Dimension(250, 35));
+        campoNomeUser.setMinimumSize(new java.awt.Dimension(250, 35));
+        campoNomeUser.setPreferredSize(new java.awt.Dimension(250, 35));
         campoNomeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNomeUserActionPerformed(evt);
@@ -91,8 +95,9 @@ public class telaUsers extends javax.swing.JInternalFrame {
         foneUser.setPreferredSize(new java.awt.Dimension(100, 32));
 
         campoFoneUser.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoFoneUser.setMinimumSize(new java.awt.Dimension(100, 200));
-        campoFoneUser.setPreferredSize(null);
+        campoFoneUser.setMaximumSize(new java.awt.Dimension(150, 35));
+        campoFoneUser.setMinimumSize(new java.awt.Dimension(150, 35));
+        campoFoneUser.setPreferredSize(new java.awt.Dimension(150, 35));
         campoFoneUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoFoneUserActionPerformed(evt);
@@ -107,8 +112,9 @@ public class telaUsers extends javax.swing.JInternalFrame {
         senhaUser.setPreferredSize(new java.awt.Dimension(100, 32));
 
         campoSenhaUser.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoSenhaUser.setMinimumSize(new java.awt.Dimension(100, 200));
-        campoSenhaUser.setPreferredSize(null);
+        campoSenhaUser.setMaximumSize(new java.awt.Dimension(150, 35));
+        campoSenhaUser.setMinimumSize(new java.awt.Dimension(150, 35));
+        campoSenhaUser.setPreferredSize(new java.awt.Dimension(150, 35));
         campoSenhaUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoSenhaUserActionPerformed(evt);
@@ -123,7 +129,10 @@ public class telaUsers extends javax.swing.JInternalFrame {
         loginUser.setPreferredSize(new java.awt.Dimension(100, 32));
 
         campoLoginUser.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoLoginUser.setPreferredSize(null);
+        campoLoginUser.setMaximumSize(new java.awt.Dimension(150, 35));
+        campoLoginUser.setMinimumSize(new java.awt.Dimension(150, 35));
+        campoLoginUser.setName(""); // NOI18N
+        campoLoginUser.setPreferredSize(new java.awt.Dimension(150, 35));
         campoLoginUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoLoginUserActionPerformed(evt);
@@ -138,50 +147,60 @@ public class telaUsers extends javax.swing.JInternalFrame {
         perfilUser.setPreferredSize(new java.awt.Dimension(100, 32));
 
         campoPerfilUser.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        campoPerfilUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Admin" }));
+        campoPerfilUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuário", "Admin" }));
         campoPerfilUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoPerfilUserActionPerformed(evt);
             }
         });
 
-        editUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeEditar.png"))); // NOI18N
-        editUser.setMaximumSize(new java.awt.Dimension(70, 70));
-        editUser.setMinimumSize(new java.awt.Dimension(70, 70));
-        editUser.setPreferredSize(new java.awt.Dimension(70, 70));
-        editUser.addActionListener(new java.awt.event.ActionListener() {
+        butEditUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeEditar.png"))); // NOI18N
+        butEditUser.setEnabled(false);
+        butEditUser.setMaximumSize(new java.awt.Dimension(70, 70));
+        butEditUser.setMinimumSize(new java.awt.Dimension(70, 70));
+        butEditUser.setPreferredSize(new java.awt.Dimension(70, 70));
+        butEditUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editUserActionPerformed(evt);
+                butEditUserActionPerformed(evt);
             }
         });
 
-        removeUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeRemover.png"))); // NOI18N
-        removeUser.setMaximumSize(new java.awt.Dimension(70, 70));
-        removeUser.setMinimumSize(new java.awt.Dimension(70, 70));
-        removeUser.setPreferredSize(new java.awt.Dimension(70, 70));
-        removeUser.addActionListener(new java.awt.event.ActionListener() {
+        butRemoveUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeRemover.png"))); // NOI18N
+        butRemoveUser.setEnabled(false);
+        butRemoveUser.setMaximumSize(new java.awt.Dimension(70, 70));
+        butRemoveUser.setMinimumSize(new java.awt.Dimension(70, 70));
+        butRemoveUser.setPreferredSize(new java.awt.Dimension(70, 70));
+        butRemoveUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeUserActionPerformed(evt);
+                butRemoveUserActionPerformed(evt);
             }
         });
 
-        addUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeAdd.png"))); // NOI18N
-        addUser.setMaximumSize(new java.awt.Dimension(70, 70));
-        addUser.setMinimumSize(new java.awt.Dimension(70, 70));
-        addUser.setPreferredSize(new java.awt.Dimension(70, 70));
-        addUser.addActionListener(new java.awt.event.ActionListener() {
+        butAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/telas/iconeAdd.png"))); // NOI18N
+        butAddUser.setMaximumSize(new java.awt.Dimension(70, 70));
+        butAddUser.setMinimumSize(new java.awt.Dimension(70, 70));
+        butAddUser.setPreferredSize(new java.awt.Dimension(70, 70));
+        butAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addUserActionPerformed(evt);
+                butAddUserActionPerformed(evt);
             }
         });
 
-        pesquisarUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/icons/iconePesquisa.png"))); // NOI18N
-        pesquisarUser.setMaximumSize(new java.awt.Dimension(70, 70));
-        pesquisarUser.setMinimumSize(new java.awt.Dimension(70, 70));
-        pesquisarUser.setPreferredSize(new java.awt.Dimension(70, 70));
-        pesquisarUser.addActionListener(new java.awt.event.ActionListener() {
+        butPesquisarUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/bytecare/assistenciatecnica/turma472/icons/iconePesquisa.png"))); // NOI18N
+        butPesquisarUser.setMaximumSize(new java.awt.Dimension(70, 70));
+        butPesquisarUser.setMinimumSize(new java.awt.Dimension(70, 70));
+        butPesquisarUser.setPreferredSize(new java.awt.Dimension(70, 70));
+        butPesquisarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesquisarUserActionPerformed(evt);
+                butPesquisarUserActionPerformed(evt);
+            }
+        });
+
+        butLimparCampos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        butLimparCampos.setText("Limpar Campos");
+        butLimparCampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butLimparCamposActionPerformed(evt);
             }
         });
 
@@ -189,45 +208,45 @@ public class telaUsers extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(perfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoLoginUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoPerfilUser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(idUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(campoUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(nomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(foneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(senhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoFoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(foneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(senhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(loginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(perfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(campoPerfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoLoginUser, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(addUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pesquisarUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(removeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                                    .addComponent(campoNomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(campoUserId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(campoFoneUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(campoSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(butLimparCampos)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(butAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(butPesquisarUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(butEditUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(butRemoveUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,12 +271,14 @@ public class telaUsers extends javax.swing.JInternalFrame {
                     .addComponent(campoSenhaUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(perfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoPerfilUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(butLimparCampos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(removeUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pesquisarUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(butEditUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butPesquisarUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butRemoveUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -288,40 +309,46 @@ public class telaUsers extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUserIdActionPerformed
 
-    private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+    private void butAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAddUserActionPerformed
         try {
             user.addUser();
         } catch (SQLException ex) {
             Logger.getLogger(telaUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_addUserActionPerformed
+    }//GEN-LAST:event_butAddUserActionPerformed
 
-    private void pesquisarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarUserActionPerformed
-        try {
-            user.pesquisarUser();
-        } catch (SQLException ex) {
-            Logger.getLogger(telaUsers.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_pesquisarUserActionPerformed
-
-    private void editUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUserActionPerformed
+    private void butEditUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditUserActionPerformed
         try {
             user.editUser();
         } catch (SQLException ex) {
             Logger.getLogger(telaUsers.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_editUserActionPerformed
+    }//GEN-LAST:event_butEditUserActionPerformed
 
-    private void removeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeUserActionPerformed
+    private void butRemoveUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRemoveUserActionPerformed
         user.removeUser();
-    }//GEN-LAST:event_removeUserActionPerformed
+    }//GEN-LAST:event_butRemoveUserActionPerformed
 
-    public JButton getAddUser() {
-        return addUser;
+    private void butPesquisarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butPesquisarUserActionPerformed
+        try {
+            user.pesquisarUser();
+        } catch (SQLException ex) {
+            Logger.getLogger(telaUsers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_butPesquisarUserActionPerformed
+
+    private void butLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimparCamposActionPerformed
+        user.limparCampos();
+        butAddUser.setEnabled(true);
+        butPesquisarUser.setEnabled(true);
+    }//GEN-LAST:event_butLimparCamposActionPerformed
+
+    public JButton getButAddUser() {
+        return butAddUser;
     }
 
-    public void setAddUser(JButton addUser) {
-        this.addUser = addUser;
+    public void setButAddUser(JButton addUser) {
+        this.butAddUser = addUser;
     }
 
     public JTextField getCampoFoneUser() {
@@ -364,20 +391,20 @@ public class telaUsers extends javax.swing.JInternalFrame {
         this.campoSenhaUser = campoSenhaUser;
     }
 
-    public JButton getEditUser() {
-        return editUser;
+    public JButton getButEditUser() {
+        return butEditUser;
     }
 
-    public void setEditUser(JButton editUser) {
-        this.editUser = editUser;
+    public void setButEditUser(JButton editUser) {
+        this.butEditUser = editUser;
     }
 
-    public JButton getRemoveUser() {
-        return removeUser;
+    public JButton getButRemoveUser() {
+        return butRemoveUser;
     }
 
-    public void setRemoveUser(JButton removeUser) {
-        this.removeUser = removeUser;
+    public void setButRemoveUser(JButton removeUser) {
+        this.butRemoveUser = removeUser;
     }
 
     public JTextField getCampoUserId() {
@@ -388,32 +415,33 @@ public class telaUsers extends javax.swing.JInternalFrame {
         this.campoUserId = campoUserId;
     }
 
-    public JButton getPesquisarUser() {
-        return pesquisarUser;
+    public JButton getButPesquisarUser() {
+        return butPesquisarUser;
     }
 
-    public void setPesquisarUser(JButton pesquisarUser) {
-        this.pesquisarUser = pesquisarUser;
+    public void setButPesquisarUser(JButton pesquisarUser) {
+        this.butPesquisarUser = pesquisarUser;
     }
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addUser;
+    private javax.swing.JButton butAddUser;
+    private javax.swing.JButton butEditUser;
+    private javax.swing.JButton butLimparCampos;
+    private javax.swing.JButton butPesquisarUser;
+    private javax.swing.JButton butRemoveUser;
     private javax.swing.JTextField campoFoneUser;
     private javax.swing.JTextField campoLoginUser;
     private javax.swing.JTextField campoNomeUser;
     private javax.swing.JComboBox<String> campoPerfilUser;
     private javax.swing.JTextField campoSenhaUser;
     private javax.swing.JTextField campoUserId;
-    private javax.swing.JButton editUser;
     private javax.swing.JLabel foneUser;
     private javax.swing.JLabel idUser;
     private javax.swing.JLabel loginUser;
     private javax.swing.JLabel nomeUser;
     private javax.swing.JLabel perfilUser;
-    private javax.swing.JButton pesquisarUser;
-    private javax.swing.JButton removeUser;
     private javax.swing.JLabel senhaUser;
     // End of variables declaration//GEN-END:variables
 }

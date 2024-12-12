@@ -55,14 +55,18 @@ public class telaLogin extends javax.swing.JFrame {
         jLabel1.setText("Usuário");
 
         campoSenha.setToolTipText("Digite sua senha");
-        campoSenha.setMaximumSize(new java.awt.Dimension(68, 26));
+        campoSenha.setMaximumSize(new java.awt.Dimension(200, 30));
+        campoSenha.setMinimumSize(new java.awt.Dimension(200, 30));
         campoSenha.setName("campoUsuario"); // NOI18N
+        campoSenha.setPreferredSize(new java.awt.Dimension(200, 30));
 
         jLabel2.setText("Senha:");
 
         campoUser.setToolTipText("Digite o nome de usuário");
-        campoUser.setMaximumSize(new java.awt.Dimension(68, 26));
+        campoUser.setMaximumSize(new java.awt.Dimension(200, 30));
+        campoUser.setMinimumSize(new java.awt.Dimension(200, 30));
         campoUser.setName("campoUsuario"); // NOI18N
+        campoUser.setPreferredSize(new java.awt.Dimension(200, 30));
         campoUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUserActionPerformed(evt);
@@ -93,7 +97,7 @@ public class telaLogin extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(campoUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(58, 58, 58)))
         );
         layout.setVerticalGroup(
@@ -107,12 +111,12 @@ public class telaLogin extends javax.swing.JFrame {
                     .addGap(24, 24, 24)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(campoUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(19, 19, 19)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(46, Short.MAX_VALUE)))
+                    .addContainerGap(42, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

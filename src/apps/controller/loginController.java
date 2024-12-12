@@ -33,7 +33,7 @@ public class loginController {
         System.out.println(username);
         System.out.println(pw);
         
-        try (PreparedStatement pst = conexao.prepareStatement("SELECT login_usuario, senha_usuario, adm FROM usuarios WHERE login_usuario=? and senha_usuario=?")) {
+        try (PreparedStatement pst = conexao.prepareStatement("SELECT login_usuario, senha_usuario, perfil FROM usuarios WHERE login_usuario=? and senha_usuario=?")) {
             pst.setString(1, username);
             pst.setString(2, pw);
             

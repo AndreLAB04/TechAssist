@@ -10,20 +10,20 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name="usuarios")
-public class loginModel {
+public class cadastroLoginModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_usuario;
-    @Column(nullable = false, length = 200)
+    @Column(nullable = true, length = 200)
     private String nome_usuario;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String fone_usuario;
-    @Column(nullable = true, length = 8)
+    @Column(nullable = false, length = 16)
     private String senha_usuario;
-    @Column(nullable = true, length = 16)
+    @Column(nullable = false, length = 16)
     private String login_usuario;
     @Column(nullable = false, length = 0)
-    private boolean adm;
+    private String perfil;
 
     public int getId_usuario() {
         return id_usuario;
@@ -65,11 +65,11 @@ public class loginModel {
         this.login_usuario = login_usuario;
     }
 
-    public boolean isAdm() {
-        return adm;
+    public String isPerfil() {
+        return perfil;
     }
 
-    public void setAdm(boolean adm) {
-        this.adm = adm;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }   
 }
